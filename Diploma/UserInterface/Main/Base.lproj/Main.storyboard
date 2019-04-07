@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Diploma" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -693,25 +694,118 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="V9R-n2-FLV" kind="relationship" relationship="window.shadowedContentViewController" id="JVe-mJ-08e"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Main View Controller-->
+        <scene sceneID="kSI-xz-vMV">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="V9R-n2-FLV" customClass="MainViewController" customModule="Diploma" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="7jU-6u-iqq">
+                        <rect key="frame" x="0.0" y="0.0" width="643" height="330"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="14" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQS-fq-kWO">
+                                <rect key="frame" x="0.0" y="0.0" width="643" height="330"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="SaY-W9-lbv" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="20" y="80" width="603" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="2xH-mf-zcB"/>
+                                        </constraints>
+                                    </customView>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwV-rk-wSN">
+                                        <rect key="frame" x="185" y="0.0" width="274" height="66"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X9s-zR-TTK">
+                                                <rect key="frame" x="-6" y="16" width="73" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A3p-3j-LDF">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="startRecord:" target="V9R-n2-FLV" id="eQ8-V9-qeQ"/>
+                                                </connections>
+                                            </button>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0dR-dT-BfW">
+                                                <rect key="frame" x="69" y="25" width="65" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Oj5-ye-t3n">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MUG-rE-Oys">
+                                                <rect key="frame" x="136" y="16" width="73" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V5s-Cn-wLs">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="stopRecord:" target="V9R-n2-FLV" id="aH4-4K-SHm"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F3L-eB-F38">
+                                                <rect key="frame" x="207" y="16" width="73" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cOe-FD-DIT">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <connections>
+                                                        <action selector="openFile:" target="V9R-n2-FLV" id="qzq-qm-t0w"/>
+                                                    </connections>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GwV-rk-wSN" firstAttribute="height" secondItem="oQS-fq-kWO" secondAttribute="height" multiplier="0.2" id="DoM-Oh-5iN"/>
+                                    <constraint firstItem="SaY-W9-lbv" firstAttribute="leading" secondItem="oQS-fq-kWO" secondAttribute="leading" constant="20" id="pze-F8-6fJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="SaY-W9-lbv" secondAttribute="trailing" constant="20" id="rhu-jO-WIG"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oQS-fq-kWO" firstAttribute="width" secondItem="7jU-6u-iqq" secondAttribute="width" id="7XS-DW-b3v"/>
+                            <constraint firstItem="oQS-fq-kWO" firstAttribute="centerY" secondItem="7jU-6u-iqq" secondAttribute="centerY" id="9Qh-FV-EQk"/>
+                            <constraint firstItem="oQS-fq-kWO" firstAttribute="centerX" secondItem="7jU-6u-iqq" secondAttribute="centerX" id="vTV-d8-4b1"/>
+                            <constraint firstItem="oQS-fq-kWO" firstAttribute="height" secondItem="7jU-6u-iqq" secondAttribute="height" id="x0D-75-aB1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="soundChart" destination="SaY-W9-lbv" id="Nr1-is-7YC"/>
+                        <outlet property="startButton" destination="X9s-zR-TTK" id="SL7-lD-x0R"/>
+                        <outlet property="stopButton" destination="MUG-rE-Oys" id="cDQ-KL-gyd"/>
+                        <outlet property="timeLabel" destination="0dR-dT-BfW" id="M7w-Gy-j5t"/>
+                    </connections>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="Qnp-rC-fSH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="117" y="637"/>
         </scene>
     </scenes>
 </document>
